@@ -1,0 +1,19 @@
+.cli-window {
+    height: 100%;
+    /* Modern monospace font stack */
+    font-family: 'MesloLGS NF', 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 1rem;
+    overflow: hidden;
+    /* Terminal handles scroll */
+    background-color: #0f0f12;
+    /* Deep dark theme */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Override the emulator container to fit and be transparent */
+div[name="react-console-emulator"] {
+    height: 100% !important;
+    background-color: transparent !important;
+    min-height: 100%;
+}

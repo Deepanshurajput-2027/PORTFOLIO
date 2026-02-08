@@ -1,0 +1,106 @@
+/**
+ * @file: profile.config.ts
+ * @author: Deepanshu Rajput
+ * @summary: Product-focused frontend engineer building modern interactive web experiences.
+ */
+
+// --------------------------------------------------
+// 1. CORE DEPENDENCIES & SKILLS
+// --------------------------------------------------
+
+const TECH_STACK = {
+  frontend: [
+    "HTML5",        // 95%
+    "CSS3",         // 95%
+    "JavaScript",   // 90%
+    "React.js",     // 75%
+  ],
+  backend: [
+    "Node.js",      // 65%
+    "Express.js",   // 60%
+    "MongoDB",      // 60%
+    "REST APIs",    // 70%
+  ],
+  tools: ["Git", "GitHub", "Vercel", "Render", "Figma"]
+};
+
+// --------------------------------------------------
+// 2. EXPERIENCE LOG (Reverse Chronological)
+// --------------------------------------------------
+
+class ProfessionalHistory {
+
+  /** * CURRENT ROLE
+   * @period 2025 - Present
+   */
+  public async Independent_Product_Builder(): Promise<Impact> {
+    const role = "Frontend & Product Developer";
+
+    // Key Achievements
+    const projects = [
+      "Figma Clone (Browser-based Design Editor)",
+      "Notes Manager (Full-stack CRUD App)",
+      "WeatherPro (API-based Forecast App)"
+    ];
+
+    const architecture = "Frontend-first rapid product prototyping";
+    const focus = "Interactive UI, performance optimization, and product-driven engineering";
+
+    return { role, projects, architecture, focus };
+  }
+
+  /** * PREVIOUS FOCUS
+   * @period 2023 - 2025
+   */
+  public Learning_Phase(): void {
+    this.role = "Frontend Development Learner";
+    this.focus = "UI Foundations, Responsive Design, JavaScript Logic Building";
+
+    // Built multiple UI clones and production-style mini SaaS applications
+    // Strengthened problem-solving through real deployment-based projects
+  }
+}
+
+// --------------------------------------------------
+// 3. COMPETITIVE ACHIEVEMENTS
+// --------------------------------------------------
+
+interface HackathonParticipation {
+  event: string;
+  focus: string;
+  outcome: string;
+}
+
+const innovationLog: HackathonParticipation[] = [
+  {
+    event: "Student Hackathon Participation",
+    focus: "Frontend Product Innovation",
+    outcome: "Built deployable real-world prototype applications"
+  },
+  {
+    event: "Independent Product Builds",
+    focus: "Rapid SaaS-style prototyping",
+    outcome: "Multiple deployed full-stack mini applications"
+  }
+];
+
+// --------------------------------------------------
+// 4. ACADEMIC BACKGROUND
+// --------------------------------------------------
+
+const education = new Map<string, string>([
+  ["Undergraduate Engineering Program", "Computer Science / IT (In Progress)"]
+]);
+
+export default new ProfessionalHistory();
+
+
+```bash
+# TERMINAL OUTPUT
+# ---------------------------------------
+$ deepanshu --status
+> Status: Building Production-Ready Products
+> Focus: SaaS Tools / Interactive UI Engineering
+> Deployment: Active
+> Loading Assets... [||||||||||] 100%
+> Ready.

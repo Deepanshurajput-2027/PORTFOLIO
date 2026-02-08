@@ -29,19 +29,17 @@
     scale: 1.4;
 }
 
+/* Running app indicator dot */
 .dot{
     position: absolute;
-    bottom: -8px;
-    width: 6px;
-    height: 6px;
-    background: white;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 7px;
+    height: 7px;
+    background: #ffffff;
     border-radius: 50%;
-    opacity: 0;
-    transition: opacity 150ms;
-}
-
-.icon.active .dot{
-    opacity: 1;
+    box-shadow: 0 0 6px rgba(255,255,255,.7);
 }
 
 .github,.cli{
@@ -68,4 +66,3 @@
 .link{
     background: linear-gradient(to bottom,rgb(163,97,170),rgb(142,33,150));
 }
-
