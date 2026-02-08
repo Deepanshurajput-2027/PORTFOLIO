@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+    "title": "WeatherPro",
+    "description": "A web-based weather application providing real-time forecasts, hourly and weekly weather insights, and location-based updates using OpenWeatherMap API integration.",
+    "tags": ["HTML", "CSS", "JavaScript"],
+    "repolink": "https://github.com/Deepanshurajput-2027/Weatherpro",
+    "livelink": null
+  },
+  {
+    "id": 2,
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    "title": "Apple Website Clone",
+    "description": "A frontend clone replicating Apple’s official website layout, styling, and responsive structure to practice advanced HTML and CSS design implementation techniques.",
+    "tags": ["HTML", "CSS"],
+    "repolink": "https://github.com/Deepanshurajput-2027/Apple_clone",
+    "livelink": null
+  },
+  {
+    "id": 3,
+    "image": "https://images.unsplash.com/photo-1558655146-d09347e92766",
+    "title": "Figma Clone",
+    "description": "A browser-based design editor built with modular ES6 architecture featuring drawing tools, layer management, resizing, state management, and export functionality for scalable UI design experimentation.",
+    "tags": ["JavaScript", "HTML", "CSS"],
+    "repolink": "https://github.com/Deepanshurajput-2027/figma_clone",
+    "livelink": "https://figmaclone-azure.vercel.app"
+  },
+  {
+    "id": 4,
+    "image": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b",
+    "title": "Notes Manager",
+    "description": "A full-stack notes management application allowing users to create, edit, and manage personal notes with frontend and backend integration for CRUD-based data persistence.",
+    "tags": ["JavaScript", "HTML", "CSS"],
+    "repolink": "https://github.com/Deepanshurajput-2027/Notes-manager",
+    "livelink": "https://notesmanager1.onrender.com"
+  },
+  {
+    "id": 5,
+    "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+    "title": "User Card Generator",
+    "description": "A small full-stack project that dynamically generates user profile cards using form inputs and backend processing to render customizable identity cards for demonstration purposes.",
+    "tags": ["JavaScript", "HTML", "CSS"],
+    "repolink": "https://github.com/Deepanshurajput-2027/userCard-generator",
+    "livelink": "https://cardgen-g9t7.onrender.com/"
+  },
+  {
+    "id": 6,
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "title": "Cyberfiction Website",
+    "description": "A frontend visual storytelling website demonstrating animated image sequences and interactive layout elements designed to create immersive cyber-fiction themed presentation experiences.",
+    "tags": ["JavaScript", "HTML", "CSS"],
+    "repolink": "https://github.com/Deepanshurajput-2027/CYBERFICTION-SOURCE-CODE-main",
+    "livelink": null
+  }
+]

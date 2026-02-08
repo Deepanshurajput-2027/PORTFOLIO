@@ -1,0 +1,19 @@
+.dock-trigger{
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.dock-panel{
+    transform: translateY(75%);
+    transition: transform 320ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dock-trigger:hover .dock-panel{
+    transform: translateY(0%);
+}
