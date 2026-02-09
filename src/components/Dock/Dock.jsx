@@ -48,8 +48,8 @@ const Dock = ({ windowsState, setWindowsState }) => {
     }
 
     /* external actions */
-    if (id === 'mail') window.open("mailto:deepanshu@example.com","_blank")
-    if (id === 'link') window.open("https://www.linkedin.com/","_blank")
+    if (id === 'mail') window.open("mailto:deepanshurajput2731@gmail.com","_blank")
+    if (id === 'link') window.open("www.linkedin.com/in/deepanshu-rajput-72314728b","_blank")
     if (id === 'calender') window.open("https://calendar.google.com/","_blank")
   }
 
