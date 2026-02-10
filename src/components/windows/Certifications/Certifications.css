@@ -1,11 +1,12 @@
 .cert-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     gap: 1.5rem;
     padding: 2rem;
     width: 100%;
     margin: 0 auto;
     overflow-y: auto;
+    margin-bottom: 12rem;
 }
 
 .cert-card {
@@ -20,6 +21,7 @@
     backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
+    font-family: 'Poppins', sans-serif;
 }
 
 .cert-card:hover {
@@ -54,7 +56,7 @@
 }
 
 .cert-header h3 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: #fff;
     margin: 0;
@@ -69,7 +71,7 @@
 }
 
 .cert-body p {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #a1a1aa;
     line-height: 1.5;
     margin: 0;
@@ -83,7 +85,7 @@
 }
 
 .cert-tag {
-    font-size: 0.75rem;
+    font-size: 0.90rem;
     padding: 0.25rem 0.6rem;
     border-radius: 6px;
     background: rgba(255, 255, 255, 0.05);

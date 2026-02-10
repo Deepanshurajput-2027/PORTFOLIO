@@ -1,9 +1,32 @@
-import React from 'react'
+import React, { useLayoutEffect, useRef } from 'react'
 import MacWindow from '../MacWindow'
+import gsap from 'gsap'
 import './Certifications.css'
 import certificationsData from '../../../data/certifications.json'
 
 const Certifications = ({ windowName, windowsState, setWindowsState, setIsAnyWindowMaximized }) => {
+
+    const gridRef = useRef(null)
+
+    useLayoutEffect(() => {
+        if (!gridRef.current) return
+
+        const cards = gridRef.current.querySelectorAll('.cert-card')
+
+        gsap.fromTo(cards,
+            { opacity: 0, y: 30, scale: 0.98 },
+            {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.5,
+                stagger: 0.08,
+                ease: "power2.out",
+                clearProps: "all"
+            }
+        )
+    }, [])
+
     return (
         <MacWindow
             elem="Certifications"
@@ -12,7 +35,7 @@ const Certifications = ({ windowName, windowsState, setWindowsState, setIsAnyWin
             setWindowsState={setWindowsState}
             setIsAnyWindowMaximized={setIsAnyWindowMaximized}
         >
-            <div className="cert-grid">
+            <div className="cert-grid" ref={gridRef}>
                 {certificationsData.map((cert) => (
                     <div key={cert.id} className="cert-card">
                         <div className="cert-header">

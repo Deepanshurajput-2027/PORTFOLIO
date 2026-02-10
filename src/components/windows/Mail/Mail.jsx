@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import MacWindow from '../MacWindow';
 import './Mail.css';
 
+import MailToolbar from './components/MailToolbar';
+import MailFormFields from './components/MailFormFields';
+
 const Mail = ({ windowName, windowsState, setWindowsState, setIsAnyWindowMaximized }) => {
 
     const [formData, setFormData] = useState({
@@ -85,61 +88,13 @@ const Mail = ({ windowName, windowsState, setWindowsState, setIsAnyWindowMaximiz
                             style={{ display: "none" }}
                         />
 
-                        <div className="form-group">
-                            <label>To:</label>
-                            <input type="text" value="Deepanshu Rajput" disabled className="recipient-input" />
-                        </div>
+                        {/* Components */}
+                        <MailToolbar status={status} />
 
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="subject"
-                                placeholder="Subject:"
-                                value={formData.subject}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
-
-                        <div className="form-group separator"></div>
-
-                        <textarea
-                            name="message"
-                            placeholder="Type your message here..."
-                            value={formData.message}
-                            onChange={handleChange}
-                            required
+                        <MailFormFields
+                            formData={formData}
+                            handleChange={handleChange}
                         />
-
-                        <div className="form-group separator"></div>
-
-                        <div className="form-group">
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Your Email:"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
-                            />
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="Your Name:"
-                                value={formData.name}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
-
-                        <div className="mail-actions">
-                            <button type="submit" className={`send-btn ${status}`} disabled={status === 'sending'}>
-                                {status === 'idle' && "Send"}
-                                {status === 'sending' && "Sending..."}
-                                {status === 'success' && "Sent"}
-                                {status === 'error' && "Retry"}
-                            </button>
-                        </div>
 
                     </form>
 

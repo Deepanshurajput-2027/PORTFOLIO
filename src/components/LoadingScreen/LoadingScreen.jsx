@@ -1,96 +1,165 @@
 import { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 import './LoadingScreen.css';
 
 const LoadingScreen = ({ onComplete }) => {
     const [started, setStarted] = useState(false);
-    const [activateAnim, setActivateAnim] = useState(false);
+
+    // Refs for GSAP animation
+    const wrapperRef = useRef(null);
+    const outerRingRef = useRef(null);
+    const innerRingRef = useRef(null);
+    const coreRef = useRef(null);
+    const containerRef = useRef(null);
     const audioRef = useRef(null);
 
     const handleStart = () => {
         if (started) return;
 
-        setActivateAnim(true);
-
-        setTimeout(() => {
-            setStarted(true);
-        }, 900); // ripple activation delay
-
+        // Play Sound
         const audio = new Audio('/startup.mp3');
         audio.volume = 1.0;
         audioRef.current = audio;
+        audio.play().catch(() => { });
+
+        // 1. Button Press Effect
+        gsap.to(wrapperRef.current, {
+            scale: 0.9,
+            duration: 0.1,
+            ease: "power2.out",
+            onComplete: () => {
+                // 2. Explosion / Expansion
+                gsap.to(wrapperRef.current, {
+                    scale: 30,
+                    opacity: 0,
+                    duration: 1.2,
+                    ease: "power2.inOut"
+                });
+
+                // 3. Fade out background elements
+                gsap.to(".logo-fade-out", {
+                    opacity: 0,
+                    y: -20,
+                    duration: 0.5,
+                    stagger: 0.1
+                });
+
+                // 4. White flash overlay or container transition
+                gsap.to(containerRef.current, {
+                    backgroundColor: "#000",
+                    duration: 1
+                });
+            }
+        });
+
+        // Delay specific for switching to 'Hello' screen logic
+        // We keep the original timeout based flow but aligned with animation
+        setTimeout(() => {
+            setStarted(true);
+        }, 1200);
     };
 
     useEffect(() => {
-        if (started) {
-            const soundTimeout = setTimeout(() => {
-                audioRef.current?.play().catch(() => { });
-            }, 4000);
+        // IDLE ANIMATIONS
+        if (!started && outerRingRef.current) {
+            // Outer Ring Rotation
+            gsap.to(outerRingRef.current, {
+                rotation: 360,
+                duration: 20,
+                repeat: -1,
+                ease: "none"
+            });
 
+            // Inner Ring Counter-Rotation
+            gsap.to(innerRingRef.current, {
+                rotation: -360,
+                duration: 15,
+                repeat: -1,
+                ease: "none"
+            });
+
+            // Core Pulse
+            gsap.to(coreRef.current, {
+                scale: 1.1,
+                boxShadow: "0 0 30px rgba(255, 255, 255, 0.3)",
+                duration: 2,
+                yoyo: true,
+                repeat: -1,
+                ease: "sine.inOut"
+            });
+        }
+    }, [started]);
+
+    useEffect(() => {
+        if (started) {
             const completeTimeout = setTimeout(() => {
                 onComplete();
-            }, 6000);
+            }, 5500); // Wait for Mac Hello animation
 
             return () => {
-                clearTimeout(soundTimeout);
                 clearTimeout(completeTimeout);
             };
         }
     }, [started, onComplete]);
 
     return (
-        <div className="loading-screen-container" onClick={handleStart}>
+        <div className="loading-screen-container" ref={containerRef} onClick={handleStart}>
 
             {!started ? (
-                <div className={`power-intro ${activateAnim ? 'activate' : ''}`}>
+                <div className="power-intro-wrapper">
 
-                    <div className="loader-header-left">
+                    {/* Header Info */}
+                    <div className="loader-header-left logo-fade-out">
                         <h1>DEEPANSHU RAJPUT</h1>
                         <p>WEB DEVELOPER & DESIGNER</p>
                     </div>
 
-                    <div className="loader-header-right">
+                    <div className="loader-header-right logo-fade-out">
                         <h2>PORTFOLIO V.2026</h2>
                         <p>UI/UX · CREATIVE · macOS</p>
                     </div>
 
-                    <div className="loader-footer">
+                    {/* Footer Info */}
+                    <div className="loader-footer logo-fade-out">
                         BOOTING SYSTEM... LOADING COMMANDS...
                     </div>
 
-                    <div className="loader-bottom-left">
+                    <div className="loader-bottom-left logo-fade-out">
                         <h3>SYSTEM INTEGRITY</h3>
                         <p>VERIFIED · SECURE</p>
                     </div>
 
-                    <div className="loader-bottom-right">
+                    <div className="loader-bottom-right logo-fade-out">
                         <h3>MEMORY: 100%</h3>
                         <p>LATENCY: 0ns</p>
                     </div>
 
-                    <div className="corner corner-tl"></div>
-                    <div className="corner corner-tr"></div>
-                    <div className="corner corner-bl"></div>
-                    <div className="corner corner-br"></div>
+                    <div className="corner corner-tl logo-fade-out"></div>
+                    <div className="corner corner-tr logo-fade-out"></div>
+                    <div className="corner corner-bl logo-fade-out"></div>
+                    <div className="corner corner-br logo-fade-out"></div>
 
-                    <div className="power-button-container">
-                        <div className="activation-ripple"></div>
-
-                        <svg
-                            className="power-button-svg"
-                            height="100"
-                            viewBox="0 0 24 24"
-                            width="100"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
-                            <line x1="12" y1="2" x2="12" y2="12"></line>
-                        </svg>
-
-                        <p className="start-text">Initialize system</p>
+                    {/* GSAP POWER BUTTON */}
+                    <div className="power-main-center">
+                        <div className="power-button-wrapper" ref={wrapperRef}>
+                            <div className="power-ring-outer" ref={outerRingRef}></div>
+                            <div className="power-ring-inner" ref={innerRingRef}></div>
+                            <div className="power-core" ref={coreRef}>
+                                <svg
+                                    className="power-icon"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                                    <line x1="12" y1="2" x2="12" y2="12"></line>
+                                </svg>
+                            </div>
+                        </div>
+                        <p className="start-text logo-fade-out">Initialize System</p>
                     </div>
                 </div>
             ) : (

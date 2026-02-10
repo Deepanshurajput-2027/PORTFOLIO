@@ -7,18 +7,20 @@ const Dock = ({ windowsState, setWindowsState, isAnyWindowMaximized }) => {
   const [mouseX, setMouseX] = useState(null)
   const [showDock, setShowDock] = useState(true)
 
+  const isAnyWindowOpen = Object.values(windowsState).some(Boolean)
+
   React.useEffect(() => {
-    if (!isAnyWindowMaximized) {
-      setShowDock(true)
+    if (!isAnyWindowOpen) {
+      setShowDock(true) // Always visible if no windows are open
       return
     }
 
-    // Hide by default when immersive
+    // Hide by default if any window is open (mimicking fullscreen/focus mode)
     setShowDock(false)
 
     const handleMouseMove = (e) => {
-      // Show dock if cursor is in bottom 20% of screen
-      if (e.clientY > window.innerHeight * 0.8) {
+      // Show dock if cursor is in bottom 2% of screen
+      if (e.clientY > window.innerHeight * 0.78) {
         setShowDock(true)
       } else {
         setShowDock(false)
@@ -27,7 +29,7 @@ const Dock = ({ windowsState, setWindowsState, isAnyWindowMaximized }) => {
 
     window.addEventListener('mousemove', handleMouseMove)
     return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [isAnyWindowMaximized])
+  }, [isAnyWindowOpen])
 
   const toggleIcon = (id, rect) => {
 

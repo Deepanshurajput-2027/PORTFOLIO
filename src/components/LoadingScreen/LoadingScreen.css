@@ -110,40 +110,78 @@
     }
 }
 
-/* power button */
-.power-button-container {
-    position: relative;
+/* Power Button Architecture */
+.power-intro-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-.power-button-container::before {
-    content: "";
+.power-main-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    z-index: 20;
+}
+
+.power-button-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.power-ring-outer {
     position: absolute;
-    width: 280px;
-    height: 280px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, .35), transparent 70%);
-    filter: blur(30px);
-    animation: glowPulse 4s ease-in-out infinite;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-top-color: rgba(255, 255, 255, 0.5);
+    border-bottom-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
 }
 
-@keyframes glowPulse {
-    50% {
-        transform: scale(1.25)
-    }
+.power-ring-inner {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
 }
 
-.power-button-svg {
-    color: #fff;
-    animation: iconBreath 3s infinite;
+.power-core {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
 }
 
-@keyframes iconBreath {
-    50% {
-        transform: scale(1.06)
-    }
+.power-button-wrapper:hover .power-core {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+.power-icon {
+    width: 24px;
+    height: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
 }
 
 .start-text {

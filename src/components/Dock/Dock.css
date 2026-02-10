@@ -1,4 +1,23 @@
 /* Dock container */
+@media (max-width: 768px) {
+    .icons {
+        padding: 1.5rem 1rem !important;
+        gap: 1rem !important;
+        border-radius: 1rem !important;
+        bottom: 1% !important;
+    }
+
+    .icon {
+        height: 3.5rem !important;
+        width: 3.5rem !important;
+        border-radius: 0.8rem !important;
+    }
+
+    .dock-indicator {
+        bottom: 10px !important;
+    }
+}
+
 .icons {
     position: absolute;
     bottom: 2%;
