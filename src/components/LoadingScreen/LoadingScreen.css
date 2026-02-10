@@ -1,0 +1,398 @@
+.loading-screen-container {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: inset 0 0 250px rgba(0, 0, 0, .9);
+}
+
+/* GRAIN + RADIAL DEPTH */
+/* GRAIN + RADIAL DEPTH */
+.loading-screen-container::before {
+    display: none;
+}
+
+/* CINEMATIC BEAM CROSS */
+/* CINEMATIC BEAM CROSS */
+.loading-screen-container::after {
+    display: none;
+}
+
+/* header */
+.loader-header-left {
+    position: absolute;
+    top: 60px;
+    left: 70px;
+    color: #fff;
+    letter-spacing: 3px;
+    text-shadow: 0 0 12px rgba(255, 255, 255, .35);
+}
+
+.loader-header-left p {
+    font-size: 11px;
+    opacity: .7
+}
+
+.loader-header-right {
+    position: absolute;
+    top: 60px;
+    right: 70px;
+    text-align: right;
+    color: #fff;
+    letter-spacing: 3px;
+    text-shadow: 0 0 12px rgba(255, 255, 255, .35);
+}
+
+/* footer */
+/* footer */
+.loader-footer {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: monospace;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    animation: pulseFooter 2s infinite alternate;
+    width: 300px;
+    text-align: center;
+    overflow: hidden;
+    /* Ensure scan line stays within bounds if needed, or remove if we want it to fly across */
+}
+
+/* scan line effect */
+.loader-footer::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    margin-top: 10px;
+    opacity: 0.5;
+    animation: scanLine 3s infinite ease-in-out;
+}
+
+@keyframes pulseFooter {
+    from {
+        opacity: 0.4;
+    }
+
+    to {
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+}
+
+@keyframes scanLine {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* power button */
+.power-button-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.power-button-container::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, .35), transparent 70%);
+    filter: blur(30px);
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    50% {
+        transform: scale(1.25)
+    }
+}
+
+.power-button-svg {
+    color: #fff;
+    animation: iconBreath 3s infinite;
+}
+
+@keyframes iconBreath {
+    50% {
+        transform: scale(1.06)
+    }
+}
+
+.start-text {
+    margin-top: 20px;
+    font-family: 'Righteous', cursive;
+    /* Using the font already imported */
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, #fff 0%, #888 50%, #fff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shineText 3s linear infinite;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.start-text:hover,
+.power-button-container:hover .start-text {
+    letter-spacing: 6px;
+    opacity: 1;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+@keyframes shineText {
+    0% {
+        background-position: -200%;
+    }
+
+    100% {
+        background-position: 200%;
+    }
+}
+
+.activation-ripple {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, .4), transparent);
+    opacity: 0;
+}
+
+.power-intro.activate .activation-ripple {
+    animation: ripple 1s forwards;
+}
+
+@keyframes ripple {
+    from {
+        transform: scale(.3);
+        opacity: 1
+    }
+
+    to {
+        transform: scale(6);
+        opacity: 0
+    }
+}
+
+/* corners */
+.corner {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border: 4px solid rgba(255, 255, 255, .5);
+}
+
+.corner-tl {
+    top: 40px;
+    left: 40px;
+    border-right: 0;
+    border-bottom: 0
+}
+
+.corner-tr {
+    top: 40px;
+    right: 40px;
+    border-left: 0;
+    border-bottom: 0
+}
+
+.corner-bl {
+    bottom: 40px;
+    left: 40px;
+    border-right: 0;
+    border-top: 0
+}
+
+.corner-br {
+    bottom: 40px;
+    right: 40px;
+    border-left: 0;
+    border-top: 0
+}
+
+/* hello */
+.st0 {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 25;
+    stroke-dasharray: 4200;
+    stroke-dashoffset: 4200;
+}
+
+.animate-hello .st0 {
+    animation: writeIn 5s linear forwards;
+}
+
+@keyframes writeIn {
+    to {
+        stroke-dashoffset: 0
+    }
+}
+
+.intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.macintosh {
+    width: 80%;
+    max-width: 600px;
+}
+
+/* BOTTOM INFO (CORNERS) */
+.loader-bottom-left {
+    position: absolute;
+    bottom: 60px;
+    left: 70px;
+    color: #fff;
+    letter-spacing: 3px;
+    text-align: left;
+    text-shadow: 0 0 12px rgba(255, 255, 255, .35);
+}
+
+.loader-bottom-left h3 {
+    font-size: 14px;
+    margin: 0;
+    font-weight: 300;
+    font-family: 'Righteous', cursive;
+    color: #0ff;
+    /* Sci-fi cyan accent */
+    animation: textFlash 4s infinite;
+}
+
+.loader-bottom-left p {
+    font-size: 11px;
+    opacity: .7;
+    margin-top: 5px;
+}
+
+.loader-bottom-right {
+    position: absolute;
+    bottom: 60px;
+    right: 70px;
+    color: #fff;
+    letter-spacing: 3px;
+    text-align: right;
+    text-shadow: 0 0 12px rgba(255, 255, 255, .35);
+}
+
+.loader-bottom-right h3 {
+    font-size: 14px;
+    margin: 0;
+    font-weight: 300;
+    font-family: 'Righteous', cursive;
+    color: #f0f;
+    /* Sci-fi magenta accent */
+    animation: textFlash 5s infinite reverse;
+}
+
+.loader-bottom-right p {
+    font-size: 11px;
+    opacity: .7;
+    margin-top: 5px;
+}
+
+@keyframes textFlash {
+
+    0%,
+    90%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        text-shadow: 0 0 10px currentColor;
+    }
+
+    92% {
+        opacity: 0.5;
+        transform: skewX(10deg);
+        text-shadow: 2px 0 2px red;
+    }
+
+    94% {
+        opacity: 1;
+        transform: skewX(-5deg);
+        text-shadow: -2px 0 2px blue;
+    }
+
+    96% {
+        opacity: 0.8;
+        transform: skewX(2deg);
+    }
+
+    98% {
+        opacity: 1;
+        transform: skewX(0);
+    }
+}
+
+
+/* @import url('https://fonts.googleapis.com/css?family=Caveat|Righteous&display=swap');
+.info-content{
+  background:black;
+  width:100%;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+.info-title{
+  font-family: 'Righteous', cursive;
+  background:url('https://media.giphy.com/media/FE0WTM8BG754I/giphy.gif') center center no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size:7rem;
+  letter-spacing:10px;
+  background-size:cover;
+  margin:0px;
+  color:transparent;
+}
+.info-subtitle{
+  font-family: 'Caveat', cursive;
+   color:transparent;
+  font-size:2rem;
+   letter-spacing:5px;
+  margin:0px;
+  background:linear-gradient(to right, #c4c4c4 ,#6a6a6a);
+  -webkit-background-clip: text;
+  
+} */

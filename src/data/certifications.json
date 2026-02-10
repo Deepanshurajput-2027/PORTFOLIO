@@ -1,0 +1,123 @@
+[
+    {
+        "id": 1,
+        "title": "AI Agent Development",
+        "description": "Comprehensive training on building autonomous AI agents, leveraging large language models (LLMs) and advanced frameworks for intelligent automation.",
+        "tags": [
+            "AI",
+            "LLM",
+            "Python"
+        ],
+        "link": "/certification/AI Agent letsupgrade.pdf"
+    },
+    {
+        "id": 2,
+        "title": "C Programming Certificate",
+        "description": "Foundational mastery of C programming language, covering memory management, pointers, and efficient algorithm design.",
+        "tags": [
+            "C",
+            "Low-level",
+            "Algorithms"
+        ],
+        "link": "/certification/C CERTIFICATE.pdf"
+    },
+    {
+        "id": 3,
+        "title": "C++ Programming Certificate",
+        "description": "Advanced object-oriented programming with C++, focusing on performance, STL, and modern C++ standards.",
+        "tags": [
+            "C++",
+            "OOP",
+            "STL"
+        ],
+        "link": "/certification/C++ certificate.pdf"
+    },
+    {
+        "id": 4,
+        "title": "ChatGPT Prompt Engineering",
+        "description": "Specialized certification in effectively utilizing ChatGPT for productivity, coding assistance, and content generation.",
+        "tags": [
+            "AI",
+            "Prompt Engineering",
+            "ChatGPT"
+        ],
+        "link": "/certification/CHAT-GPT CERTIFICATE.pdf"
+    },
+    {
+        "id": 5,
+        "title": "CSS Styling Mastery",
+        "description": "Expertise in modern CSS techniques, including Flexbox, Grid, responsive design, and CSS animations.",
+        "tags": [
+            "CSS",
+            "Web Design",
+            "Responsive"
+        ],
+        "link": "/certification/CSS CERTIFICATE.pdf"
+    },
+    {
+        "id": 6,
+        "title": "Data Structures & Algorithms",
+        "description": "In-depth study of core data structures and algorithms, essential for efficient software development and problem-solving.",
+        "tags": [
+            "DSA",
+            "Algorithms",
+            "Optimization"
+        ],
+        "link": "/certification/DSA CERTIFICATE.pdf"
+    },
+    {
+        "id": 7,
+        "title": "HTML5 Certification",
+        "description": "Certified proficiency in HTML5 semantic markup, accessibility standards, and web document structure.",
+        "tags": [
+            "HTML5",
+            "Web Standards",
+            "Accessibility"
+        ],
+        "link": "/certification/HTML CERTIFICATE.pdf"
+    },
+    {
+        "id": 8,
+        "title": "Advanced HTML Development",
+        "description": "Advanced concepts in HTML development, focusing on modern web application structure and best practices.",
+        "tags": [
+            "HTML",
+            "Web Dev",
+            "LestUpgrade"
+        ],
+        "link": "/certification/HTML letsupgrade.pdf"
+    },
+    {
+        "id": 9,
+        "title": "ICAT Hackathon Participation",
+        "description": "Successfully participated in the ICAT hackathon, demonstrating rapid prototyping and collaborative problem-solving skills.",
+        "tags": [
+            "Hackathon",
+            "Teamwork",
+            "Innovation"
+        ],
+        "link": "/certification/ICAT_PARTICIPATION_CERTIFICATE.pdf"
+    },
+    {
+        "id": 10,
+        "title": "Python Programming Part 1",
+        "description": "Fundamental Python programming certification, covering syntax, data types, and control structures.",
+        "tags": [
+            "Python",
+            "Scripting",
+            "Basics"
+        ],
+        "link": "/certification/PYTHON PART-1 CERTIFICATE.pdf"
+    },
+    {
+        "id": 11,
+        "title": "Python Programming Part 2",
+        "description": "Advanced Python concepts including file handling, modules, and object-oriented programming in Python.",
+        "tags": [
+            "Python",
+            "OOP",
+            "Advanced"
+        ],
+        "link": "/certification/PYTHON PART-2 CERTIFICATE.pdf"
+    }
+]

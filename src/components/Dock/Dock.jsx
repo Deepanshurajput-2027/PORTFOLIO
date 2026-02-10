@@ -1,115 +1,108 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import './Dock.css'
+import { iconsList } from '../../data/dockData'
+import DockIcon from './DockIcon'
 
-const iconsList = [
-  { id: 'github', src: '/doc-icons/github.svg' },
-  { id: 'mail', src: '/doc-icons/mail.svg' },
-  { id: 'link', src: '/doc-icons/link.svg' },
-  { id: 'cli', src: '/doc-icons/cli.svg' },
-  { id: 'calender', src: '/doc-icons/calender.svg' },
-  { id: 'note', src: '/doc-icons/note.svg' },
-  { id: 'pdf', src: '/doc-icons/pdf.svg' },
-  { id: 'spotify', src: '/doc-icons/spotify.svg' },
-]
-
-const MAX_SCALE = 1.5
-const SELECTED_SCALE = 1.25
-const INFLUENCE_DISTANCE = 120
-
-const Dock = ({ windowsState, setWindowsState }) => {
+const Dock = ({ windowsState, setWindowsState, isAnyWindowMaximized }) => {
   const [mouseX, setMouseX] = useState(null)
+  const [showDock, setShowDock] = useState(true)
+
+  React.useEffect(() => {
+    if (!isAnyWindowMaximized) {
+      setShowDock(true)
+      return
+    }
+
+    // Hide by default when immersive
+    setShowDock(false)
+
+    const handleMouseMove = (e) => {
+      // Show dock if cursor is in bottom 20% of screen
+      if (e.clientY > window.innerHeight * 0.8) {
+        setShowDock(true)
+      } else {
+        setShowDock(false)
+      }
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [isAnyWindowMaximized])
 
   const toggleIcon = (id, rect) => {
 
-    /* internal windows */
-    if (['github','note','pdf','spotify','cli'].includes(id)) {
+    if (['github', 'note', 'pdf', 'spotify', 'cli', 'mail', 'calender'].includes(id)) {
 
-      const key = id === 'pdf' ? 'resume' : id
-
-      /* send launch animation event */
+      let key = id;
+      if (id === 'pdf') key = 'resume';
+      if (id === 'calender') key = 'certifications';
       window.dispatchEvent(new CustomEvent('dock-launch', {
-        detail: { id:key, rect }
+        detail: { id: key, rect }
       }))
 
       setWindowsState(prev => {
         const isAlreadyOpen = prev[key]
 
-        const cleared = Object.keys(prev).reduce((acc,k)=>{
+        const cleared = Object.keys(prev).reduce((acc, k) => {
           acc[k] = false
           return acc
-        },{})
+        }, {})
 
         if (isAlreadyOpen) return cleared
-
         return { ...cleared, [key]: true }
       })
 
       return
     }
 
-    /* external actions */
-    if (id === 'mail') window.open("mailto:deepanshurajput2731@gmail.com","_blank")
-    if (id === 'link') window.open("www.linkedin.com/in/deepanshu-rajput-72314728b","_blank")
-    if (id === 'calender') window.open("https://calendar.google.com/","_blank")
+    if (id === 'mail') {
+      const email = "deepanshurajput2731@gmail.com";
+      const subject = encodeURIComponent("Project Inquiry / Collaboration");
+      const body = encodeURIComponent(`Hi Deepanshu,\n\nI checked out your portfolio and would like to connect regarding...\n\n[Please mention your requirements here]\n\nBest regards,`);
+
+      const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+      window.open(gmailLink, "_blank");
+    }
+
+    if (id === 'linkedin') window.open("https://www.linkedin.com/in/deepanshu-rajput-72314728b", "_blank")
   }
 
   return (
-    <div
-      className="icons"
-      onMouseMove={(e)=>setMouseX(e.clientX)}
-      onMouseLeave={()=>setMouseX(null)}
-    >
-      {iconsList.map((icon) => {
-        const key = icon.id === 'pdf' ? 'resume' : icon.id
-        const isRunning = windowsState?.[key]
+    <>
+      <div className={`dock-indicator ${!showDock && isAnyWindowMaximized ? 'visible' : ''}`}>
+        <span></span>
+      </div>
 
-        return (
-          <Icon
-            key={icon.id}
-            icon={icon}
-            mouseX={mouseX}
-            isRunning={isRunning}
-            toggleIcon={toggleIcon}
-          />
-        )
-      })}
-    </div>
-  )
-}
+      <div
+        className="icons"
+        onMouseMove={(e) => setMouseX(e.clientX)}
+        onMouseLeave={() => setMouseX(null)}
+        style={{
+          transform: showDock
+            ? 'translateX(-50%) translateY(0)'
+            : 'translateX(-50%) translateY(200%)',
+          transition: 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)', // Smooth ease-out/in
+          bottom: showDock ? '2%' : '0%' // Slightly adjust bottom if needed, but transform does the heavy lifting
+        }}
+      >
+        {iconsList.map((icon) => {
+          let key = icon.id
+          if (icon.id === 'pdf') key = 'resume'
+          if (icon.id === 'calender') key = 'certifications'
+          const isRunning = windowsState?.[key]
 
-const Icon = ({ icon, mouseX, isRunning, toggleIcon }) => {
-  const ref = useRef(null)
-
-  let scale = 1
-  let shiftX = 0
-
-  if (mouseX !== null && ref.current) {
-    const rect = ref.current.getBoundingClientRect()
-    const center = rect.left + rect.width / 2
-    const distance = mouseX - center
-    const absDistance = Math.abs(distance)
-
-    const influence = Math.max(0, 1 - absDistance / INFLUENCE_DISTANCE)
-    scale = 1 + (MAX_SCALE - 1) * influence
-    shiftX = (scale - 1) * 10 * Math.sign(distance)
-  }
-
-  if (isRunning) scale = Math.max(scale, SELECTED_SCALE)
-
-  const lift = (scale - 1) * 15
-
-  return (
-    <div
-      ref={ref}
-      className={`icon ${icon.id}`}
-      style={{
-        transform: `translateX(${shiftX}px) translateY(-${lift}%) scale(${scale})`
-      }}
-      onClick={() => toggleIcon(icon.id, ref.current.getBoundingClientRect())}
-    >
-      <img src={icon.src} alt="" />
-      {isRunning && <span className="dot"></span>}
-    </div>
+          return (
+            <DockIcon
+              key={icon.id}
+              icon={icon}
+              mouseX={mouseX}
+              isRunning={isRunning}
+              toggleIcon={toggleIcon}
+            />
+          )
+        })}
+      </div>
+    </>
   )
 }
 

@@ -1,19 +1,58 @@
+/* CLI window container */
 .cli-window {
     height: 100%;
-    /* Modern monospace font stack */
-    font-family: 'MesloLGS NF', 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-family: 'MesloLGS NF', 'Fira Code', 'JetBrains Mono',
+        'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 1rem;
+    line-height: 1.45;
     overflow: hidden;
-    /* Terminal handles scroll */
     background-color: #0f0f12;
-    /* Deep dark theme */
-    padding: 10px;
+    padding: 0.625rem;
     box-sizing: border-box;
 }
 
-/* Override the emulator container to fit and be transparent */
+/* Ensure emulator fits perfectly */
 div[name="react-console-emulator"] {
     height: 100% !important;
     background-color: transparent !important;
     min-height: 100%;
+}
+
+/* Terminal scroll area refinement */
+div[name="react-console-emulator"] div {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+/* Webkit scrollbar styling */
+div[name="react-console-emulator"] div::-webkit-scrollbar {
+    width: 6px;
+}
+
+div[name="react-console-emulator"] div::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+div[name="react-console-emulator"] div::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+/* Input line styling */
+div[name="react-console-emulator"] input {
+    font-family: inherit;
+    outline: none;
+    background: transparent;
+    border: none;
+}
+
+/* Subtle terminal glow (very macOS-like) */
+.cli-window::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-shadow:
+        inset 0 0 3.75rem rgba(0, 0, 0, .35),
+        inset 0 0 0.625rem rgba(0, 255, 0, .05);
 }
