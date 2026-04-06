@@ -4,16 +4,17 @@ const MailFormFields = ({ formData, handleChange }) => {
     return (
         <>
             <div className="form-group">
-                <label>To:</label>
-                <input type="text" value="Deepanshu Rajput" disabled className="recipient-input" />
+                <label htmlFor="recipient-email">To:</label>
+                <input type="text" id="recipient-email" value="Deepanshu Rajput" disabled className="recipient-input" />
             </div>
 
-            <div className="form-group separator"></div>
+            <div className="form-group separator" aria-hidden="true"></div>
 
             <div className="form-group">
-                <label>Cc:</label>
+                <label htmlFor="cc-email">Cc:</label>
                 <input
                     type="text"
+                    id="cc-email"
                     name="email"
                     placeholder="Your Email"
                     value={formData.email}
@@ -23,12 +24,13 @@ const MailFormFields = ({ formData, handleChange }) => {
                 />
             </div>
 
-            <div className="form-group separator"></div>
+            <div className="form-group separator" aria-hidden="true"></div>
 
             <div className="form-group">
-                <label className='from-input'>From:</label>
+                <label className='from-input' htmlFor="from-name">From:</label>
                 <input
                     type="text"
+                    id="from-name"
                     name="name"
                     placeholder="Your Name"
                     value={formData.name}
@@ -38,12 +40,13 @@ const MailFormFields = ({ formData, handleChange }) => {
                 />
             </div>
 
-            <div className="form-group separator"></div>
+            <div className="form-group separator" aria-hidden="true"></div>
 
             <div className="form-group">
-                <label className='sub-input'>Subject:</label>
+                <label className='sub-input' htmlFor="mail-subject">Subject:</label>
                 <input
                     type="text"
+                    id="mail-subject"
                     name="subject"
                     placeholder="Subject"
                     value={formData.subject}
@@ -53,14 +56,16 @@ const MailFormFields = ({ formData, handleChange }) => {
                 />
             </div>
 
-            <div className="form-group separator"></div>
+            <div className="form-group separator" aria-hidden="true"></div>
 
             <textarea
+                id="mail-message"
                 name="message"
                 placeholder="Type your message here..."
                 value={formData.message}
                 onChange={handleChange}
                 required
+                aria-label="Mail message content"
             />
         </>
     );

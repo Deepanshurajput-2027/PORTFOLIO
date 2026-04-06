@@ -30,6 +30,13 @@ const DockIcon = ({ icon, mouseX, isRunning, toggleIcon }) => {
 
     const lift = (scale - 1) * 18
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
+            event.preventDefault(); // Prevent default scroll behavior for spacebar
+            toggleIcon(icon.id, ref.current.getBoundingClientRect());
+        }
+    };
+
     return (
         <div
             ref={ref}
@@ -41,8 +48,12 @@ const DockIcon = ({ icon, mouseX, isRunning, toggleIcon }) => {
                 transform: `translateX(${shiftX}px) translateY(-${lift}%) scale(${scale})`
             }}
             onClick={() => toggleIcon(icon.id, ref.current.getBoundingClientRect())}
+            onKeyDown={handleKeyDown}
+            role="button"
+            tabIndex={0}
+            aria-label={icon.title || icon.id}
         >
-            <img src={icon.src} alt="" />
+            <img src={icon.src} alt={icon.title || `Application icon for ${icon.id}`} />
             {isRunning && <span className="dot"></span>}
         </div>
     )
