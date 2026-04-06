@@ -30,6 +30,13 @@ const DockIcon = ({ icon, mouseX, isRunning, toggleIcon }) => {
 
     const lift = (scale - 1) * 18
 
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleIcon(icon.id, ref.current.getBoundingClientRect());
+        }
+    };
+
     return (
         <div
             ref={ref}
@@ -40,9 +47,13 @@ const DockIcon = ({ icon, mouseX, isRunning, toggleIcon }) => {
                 marginRight: `${margin}px`,
                 transform: `translateX(${shiftX}px) translateY(-${lift}%) scale(${scale})`
             }}
+            role="button"
+            tabIndex={0}
+            aria-label={isRunning ? `${icon.title || icon.id} is running` : icon.title || icon.id}
             onClick={() => toggleIcon(icon.id, ref.current.getBoundingClientRect())}
+            onKeyDown={handleKeyPress}
         >
-            <img src={icon.src} alt="" />
+            <img src={icon.src} alt={`${icon.title || icon.id} application icon`} />
             {isRunning && <span className="dot"></span>}
         </div>
     )
