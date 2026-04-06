@@ -86,6 +86,7 @@ const Mail = ({ windowName, windowsState, setWindowsState, setIsAnyWindowMaximiz
                             value={formData._gotcha}
                             onChange={handleChange}
                             style={{ display: "none" }}
+                            aria-hidden="true"
                         />
 
                         {/* Components */}
@@ -103,7 +104,7 @@ const Mail = ({ windowName, windowsState, setWindowsState, setIsAnyWindowMaximiz
 
             {/* macOS toast */}
             {showToast && (
-                <div className="mac-toast">
+                <div className="mac-toast" role="status" aria-live="polite">
                     ✉️ Message Sent Successfully
                 </div>
             )}
