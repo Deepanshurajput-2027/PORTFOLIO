@@ -77,7 +77,7 @@ const Mail = ({ windowName, windowsState, setWindowsState, setIsAnyWindowMaximiz
             <MacWindow elem="Contact me" windowName={windowName} windowsState={windowsState} setWindowsState={setWindowsState} setIsAnyWindowMaximized={setIsAnyWindowMaximized}>
                 <div className="mail-container">
 
-                    <form onSubmit={handleSend} className="mail-form">
+                    <form onSubmit={handleSend} className="mail-form" aria-label="Contact Me Form">
 
                         {/* honeypot */}
                         <input
@@ -86,6 +86,8 @@ const Mail = ({ windowName, windowsState, setWindowsState, setIsAnyWindowMaximiz
                             value={formData._gotcha}
                             onChange={handleChange}
                             style={{ display: "none" }}
+                            aria-hidden="true"
+                            tabIndex="-1"
                         />
 
                         {/* Components */}
@@ -103,7 +105,7 @@ const Mail = ({ windowName, windowsState, setWindowsState, setIsAnyWindowMaximiz
 
             {/* macOS toast */}
             {showToast && (
-                <div className="mac-toast">
+                <div className="mac-toast" role="status" aria-live="polite" aria-atomic="true">
                     ✉️ Message Sent Successfully
                 </div>
             )}
