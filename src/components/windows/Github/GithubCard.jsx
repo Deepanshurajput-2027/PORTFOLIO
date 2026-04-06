@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const GithubCard = ({ data }) => {
     return (
@@ -12,11 +12,17 @@ const GithubCard = ({ data }) => {
                 ))}
             </div>
             <div className="urls">
-                <a href={data.repolink} target="_blank" rel="noopener noreferrer">Repo Link</a>
-                {data.livelink && <a href={data.livelink} target="_blank" rel="noopener noreferrer">Live link</a>}
+                <a href={data.repolink} target="_blank" rel="noopener noreferrer" aria-label={`View repository for ${data.title}`}>
+                    Repo Link
+                </a>
+                {data.livelink && (
+                    <a href={data.livelink} target="_blank" rel="noopener noreferrer" aria-label={`View live demo for ${data.title}`}>
+                        Live link
+                    </a>
+                )}
             </div>
         </div>
     );
 };
 
-export default GithubCard
+export default GithubCard;
