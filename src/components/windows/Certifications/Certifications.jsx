@@ -35,9 +35,9 @@ const Certifications = ({ windowName, windowsState, setWindowsState, setIsAnyWin
             setWindowsState={setWindowsState}
             setIsAnyWindowMaximized={setIsAnyWindowMaximized}
         >
-            <div className="cert-grid" ref={gridRef}>
+            <div className="cert-grid" ref={gridRef} role="list">
                 {certificationsData.map((cert) => (
-                    <div key={cert.id} className="cert-card">
+                    <div key={cert.id} className="cert-card" role="listitem">
                         <div className="cert-header">
                             <div className="cert-icon">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
