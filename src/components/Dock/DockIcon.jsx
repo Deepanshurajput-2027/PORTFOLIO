@@ -51,9 +51,9 @@ const DockIcon = ({ icon, mouseX, isRunning, toggleIcon }) => {
             onKeyDown={handleKeyDown}
             role="button"
             tabIndex={0}
-            aria-label={icon.title || icon.id}
+            aria-label={icon.title ? `${icon.title} application` : `Application icon for ${icon.id}`}
         >
-            <img src={icon.src} alt={icon.title || `Application icon for ${icon.id}`} />
+            <img src={icon.src} alt={icon.title ? `${icon.title} application icon` : `Application icon for ${icon.id}`} />
             {isRunning && <span className="dot"></span>}
         </div>
     )
