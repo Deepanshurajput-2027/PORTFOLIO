@@ -3,7 +3,7 @@ import React from 'react';
 const GithubCard = ({ data }) => {
     return (
         <div className="card">
-            <img src={data.image} alt={data.title} />
+            <img src={data.image} alt={`Project image for ${data.title}`} />
             <h1>{data.title}</h1>
             <p>{data.description}</p>
             <div className="tags">

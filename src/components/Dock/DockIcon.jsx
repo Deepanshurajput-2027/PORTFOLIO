@@ -30,9 +30,9 @@ const DockIcon = ({ icon, mouseX, isRunning, toggleIcon }) => {
 
     const lift = (scale - 1) * 18
 
-    const handleKeyPress = (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
+            event.preventDefault(); // Prevent default scroll behavior for spacebar
             toggleIcon(icon.id, ref.current.getBoundingClientRect());
         }
     };
@@ -51,9 +51,12 @@ const DockIcon = ({ icon, mouseX, isRunning, toggleIcon }) => {
             tabIndex={0}
             aria-label={isRunning ? `${icon.title || icon.id} is running` : icon.title || icon.id}
             onClick={() => toggleIcon(icon.id, ref.current.getBoundingClientRect())}
-            onKeyDown={handleKeyPress}
+            onKeyDown={handleKeyDown}
+            role="button"
+            tabIndex={0}
+            aria-label={icon.title ? `${icon.title} application` : `Application icon for ${icon.id}`}
         >
-            <img src={icon.src} alt={`${icon.title || icon.id} application icon`} />
+            <img src={icon.src} alt={icon.title ? `${icon.title} application icon` : `Application icon for ${icon.id}`} />
             {isRunning && <span className="dot"></span>}
         </div>
     )

@@ -75,9 +75,9 @@ const Mail = ({ windowName, windowsState, setWindowsState, setIsAnyWindowMaximiz
     return (
         <>
             <MacWindow elem="Contact me" windowName={windowName} windowsState={windowsState} setWindowsState={setWindowsState} setIsAnyWindowMaximized={setIsAnyWindowMaximized}>
-                <div className="mail-container">
+                <div className="mail-container" role="region" aria-label="Contact form content">
 
-                    <form onSubmit={handleSend} className="mail-form">
+                    <form onSubmit={handleSend} className="mail-form" aria-label="Contact form">
 
                         {/* honeypot */}
                         <input
@@ -87,6 +87,7 @@ const Mail = ({ windowName, windowsState, setWindowsState, setIsAnyWindowMaximiz
                             onChange={handleChange}
                             style={{ display: "none" }}
                             aria-hidden="true"
+                            tabIndex="-1"
                         />
 
                         {/* Components */}
