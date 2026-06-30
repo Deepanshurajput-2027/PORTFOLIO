@@ -1,7 +1,7 @@
 import React from 'react'
 import MacWindow from '../MacWindow'
 import Terminal from 'react-console-emulator'
-import "./cli.css"
+import "./Cli.css"
 import { commands, welcomeMessage } from '../../../data/cliData'
 
 const Cli = ({ windowName, setWindowsState, setIsAnyWindowMaximized }) => {
