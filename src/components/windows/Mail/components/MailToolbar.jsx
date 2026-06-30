@@ -23,6 +23,8 @@ const MailToolbar = ({ status }) => {
                 className={`send-rect-btn ${status}`}
                 disabled={status === 'sending' || status === 'success'}
                 aria-label={getAriaLabel(status)}
+                role="button"
+                tabIndex={0}
             >
                 {status === 'idle' && (
                     <>
