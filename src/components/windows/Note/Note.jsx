@@ -3,7 +3,7 @@ import Markdown from 'react-markdown'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atelierDuneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import MacWindow from '../MacWindow'
-import "./note.css"
+import "./Note.css"
 
 
 const Note = ({ windowName, setWindowsState, setIsAnyWindowMaximized }) => {

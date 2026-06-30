@@ -52,9 +52,6 @@ const DockIcon = ({ icon, mouseX, isRunning, toggleIcon }) => {
             aria-label={isRunning ? `${icon.title || icon.id} is running` : icon.title || icon.id}
             onClick={() => toggleIcon(icon.id, ref.current.getBoundingClientRect())}
             onKeyDown={handleKeyDown}
-            role="button"
-            tabIndex={0}
-            aria-label={icon.title ? `${icon.title} application` : `Application icon for ${icon.id}`}
         >
             <img src={icon.src} alt={icon.title ? `${icon.title} application icon` : `Application icon for ${icon.id}`} />
             {isRunning && <span className="dot"></span>}

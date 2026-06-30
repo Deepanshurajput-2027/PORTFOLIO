@@ -16,7 +16,6 @@ const MailFormFields = ({ formData, handleChange }) => {
                     type="text"
                     id="cc-email"
                     name="email"
-                    id="emailCc"
                     placeholder="Your Email"
                     value={formData.email}
                     onChange={handleChange}
@@ -34,7 +33,6 @@ const MailFormFields = ({ formData, handleChange }) => {
                     type="text"
                     id="from-name"
                     name="name"
-                    id="senderName"
                     placeholder="Your Name"
                     value={formData.name}
                     onChange={handleChange}
@@ -52,7 +50,6 @@ const MailFormFields = ({ formData, handleChange }) => {
                     type="text"
                     id="mail-subject"
                     name="subject"
-                    id="mailSubject"
                     placeholder="Subject"
                     value={formData.subject}
                     onChange={handleChange}
@@ -66,9 +63,8 @@ const MailFormFields = ({ formData, handleChange }) => {
 
             <label htmlFor="messageBody" className="visually-hidden">Message content</label>
             <textarea
-                id="mail-message"
-                name="message"
                 id="messageBody"
+                name="message"
                 placeholder="Type your message here..."
                 value={formData.message}
                 onChange={handleChange}
