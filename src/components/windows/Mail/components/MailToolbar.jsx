@@ -37,7 +37,7 @@ const MailToolbar = ({ status }) => {
                 )}
                 {status === 'sending' && (
                     <>
-                        <span className="spinner"></span>
+                        <span className="spinner" aria-hidden="true"></span>
                         <span>Sending...</span>
                     </>
                 )}

@@ -12,8 +12,14 @@ const GithubCard = ({ data }) => {
                 ))}
             </div>
             <div className="urls">
-                <a href={data.repolink} target="_blank" rel="noopener noreferrer" aria-label="Repository link (opens in new tab)">Repo Link</a>
-                {data.livelink && <a href={data.livelink} target="_blank" rel="noopener noreferrer" aria-label="Live demo link (opens in new tab)">Live link</a>}
+                <a href={data.repolink} target="_blank" rel="noopener noreferrer" aria-label={`View repository for ${data.title}`}>
+                    Repo Link
+                </a>
+                {data.livelink && (
+                    <a href={data.livelink} target="_blank" rel="noopener noreferrer" aria-label={`View live demo for ${data.title}`}>
+                        Live link
+                    </a>
+                )}
             </div>
         </div>
     );

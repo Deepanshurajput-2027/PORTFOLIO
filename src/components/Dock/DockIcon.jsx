@@ -47,6 +47,9 @@ const DockIcon = ({ icon, mouseX, isRunning, toggleIcon }) => {
                 marginRight: `${margin}px`,
                 transform: `translateX(${shiftX}px) translateY(-${lift}%) scale(${scale})`
             }}
+            role="button"
+            tabIndex={0}
+            aria-label={isRunning ? `${icon.title || icon.id} is running` : icon.title || icon.id}
             onClick={() => toggleIcon(icon.id, ref.current.getBoundingClientRect())}
             onKeyDown={handleKeyDown}
             role="button"

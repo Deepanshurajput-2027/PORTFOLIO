@@ -16,11 +16,13 @@ const MailFormFields = ({ formData, handleChange }) => {
                     type="text"
                     id="cc-email"
                     name="email"
+                    id="emailCc"
                     placeholder="Your Email"
                     value={formData.email}
                     onChange={handleChange}
                     required
                     className="headless-input"
+                    aria-required="true"
                 />
             </div>
 
@@ -32,11 +34,13 @@ const MailFormFields = ({ formData, handleChange }) => {
                     type="text"
                     id="from-name"
                     name="name"
+                    id="senderName"
                     placeholder="Your Name"
                     value={formData.name}
                     onChange={handleChange}
                     required
                     className="headless-input"
+                    aria-required="true"
                 />
             </div>
 
@@ -48,19 +52,23 @@ const MailFormFields = ({ formData, handleChange }) => {
                     type="text"
                     id="mail-subject"
                     name="subject"
+                    id="mailSubject"
                     placeholder="Subject"
                     value={formData.subject}
                     onChange={handleChange}
                     required
                     className="headless-input"
+                    aria-required="true"
                 />
             </div>
 
             <div className="form-group separator" aria-hidden="true"></div>
 
+            <label htmlFor="messageBody" className="visually-hidden">Message content</label>
             <textarea
                 id="mail-message"
                 name="message"
+                id="messageBody"
                 placeholder="Type your message here..."
                 value={formData.message}
                 onChange={handleChange}
